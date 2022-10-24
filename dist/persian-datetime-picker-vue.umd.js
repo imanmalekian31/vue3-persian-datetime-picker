@@ -1047,7 +1047,7 @@ if (typeof window !== 'undefined') {
 // EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/picker/Vue3PersianDatetimePicker.vue?vue&type=template&id=6f4dc148
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/picker/Vue3PersianDatetimePicker.vue?vue&type=template&id=ea1ec48c
 
 
 var _hoisted_1 = /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createTextVNode"])("x");
@@ -1525,6 +1525,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "onUpdate:time": _cache[13] || (_cache[13] = function ($event) {
               return $data.time = $event;
             }),
+            type: $props.type,
             "is-more": $options.isMore,
             "is-lower": $options.isLower,
             "min-date": $data.minDate,
@@ -1534,7 +1535,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             "get-highlights": $options.getHighlights,
             "selected-dates": $data.selectedDates,
             "convert-to-locale-number": $options.convertToLocaleNumber
-          }, null, 8, ["date", "time", "is-more", "is-lower", "min-date", "max-date", "jump-minute", "round-minute", "get-highlights", "selected-dates", "convert-to-locale-number"])), [[external_commonjs_vue_commonjs2_vue_root_Vue_["vShow"], $options.currentStep === 't']]) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)];
+          }, null, 8, ["date", "time", "type", "is-more", "is-lower", "min-date", "max-date", "jump-minute", "round-minute", "get-highlights", "selected-dates", "convert-to-locale-number"])), [[external_commonjs_vue_commonjs2_vue_root_Vue_["vShow"], $options.currentStep === 't']]) : Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createCommentVNode"])("", true)];
         }),
         _: 1
       }), $props.autoSubmit && !$options.hasStep('t') ? (Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])(external_commonjs_vue_commonjs2_vue_root_Vue_["Fragment"], {
@@ -1597,7 +1598,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["name"])], 10, ["data-type", "data-placement", "data-locale", "data-locale-dir"]);
 }
-// CONCATENATED MODULE: ./src/picker/Vue3PersianDatetimePicker.vue?vue&type=template&id=6f4dc148
+// CONCATENATED MODULE: ./src/picker/Vue3PersianDatetimePicker.vue?vue&type=template&id=ea1ec48c
 
 // EXTERNAL MODULE: ./src/picker/assets/scss/style.scss
 var style = __webpack_require__("4635");
@@ -1796,19 +1797,19 @@ function LocaleChangevue_type_template_id_c540a4ec_render(_ctx, _cache, $props, 
 const LocaleChange_exports_ = /*#__PURE__*/exportHelper_default()(LocaleChangevue_type_script_lang_js, [['render',LocaleChangevue_type_template_id_c540a4ec_render]])
 
 /* harmony default export */ var LocaleChange = (LocaleChange_exports_);
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/picker/components/time/TimeSection.vue?vue&type=template&id=eaee77d4
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/picker/components/time/TimeSection.vue?vue&type=template&id=0d6208c6
 
-var TimeSectionvue_type_template_id_eaee77d4_hoisted_1 = {
+var TimeSectionvue_type_template_id_0d6208c6_hoisted_1 = {
   class: "vpd-addon-list-content"
 };
-function TimeSectionvue_type_template_id_eaee77d4_render(_ctx, _cache, $props, $setup, $data, $options) {
+function TimeSectionvue_type_template_id_0d6208c6_render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_time_column = Object(external_commonjs_vue_commonjs2_vue_root_Vue_["resolveComponent"])("time-column");
 
   return Object(external_commonjs_vue_commonjs2_vue_root_Vue_["openBlock"])(), Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createBlock"])("div", {
     class: ['vpd-addon-list vpd-time', {
       'vpd-disabled': $props.isDisableTime
     }]
-  }, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])("div", TimeSectionvue_type_template_id_eaee77d4_hoisted_1, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])(_component_time_column, {
+  }, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])("div", TimeSectionvue_type_template_id_0d6208c6_hoisted_1, [Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createVNode"])(_component_time_column, {
     ref: "hour",
     modelValue: $options.hourModel,
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
@@ -1830,7 +1831,7 @@ function TimeSectionvue_type_template_id_eaee77d4_render(_ctx, _cache, $props, $
     formatter: $props.convertToLocaleNumber
   }, null, 8, ["modelValue", "jump", "attributes", "formatter"])])], 2);
 }
-// CONCATENATED MODULE: ./src/picker/components/time/TimeSection.vue?vue&type=template&id=eaee77d4
+// CONCATENATED MODULE: ./src/picker/components/time/TimeSection.vue?vue&type=template&id=0d6208c6
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/picker/components/time/TimeColumn.vue?vue&type=template&id=13b8ce82
 
@@ -2427,6 +2428,10 @@ const TimeColumn_exports_ = /*#__PURE__*/exportHelper_default()(TimeColumnvue_ty
         return {};
       }
     },
+    type: {
+      type: String,
+      default: 'date'
+    },
     jumpMinute: {
       type: Number,
       default: 1
@@ -2499,7 +2504,7 @@ const TimeColumn_exports_ = /*#__PURE__*/exportHelper_default()(TimeColumnvue_ty
           var time = this.time.clone();
           var jm = this.jumpMinute;
           var m = (jm - time.minute() % jm) % jm;
-          time.add({
+          time = time.add({
             m: m
           });
 
@@ -2508,9 +2513,7 @@ const TimeColumn_exports_ = /*#__PURE__*/exportHelper_default()(TimeColumnvue_ty
             // not all of them
 
             this.selectedDates.forEach(function (d) {
-              return d.set({
-                m: time.minute()
-              });
+              d = d.set('m', time.minute());
             });
           }
         }
@@ -2521,19 +2524,12 @@ const TimeColumn_exports_ = /*#__PURE__*/exportHelper_default()(TimeColumnvue_ty
   methods: {
     setTime: function setTime(v, k) {
       var time = this.time.clone();
-      time.set(k, v);
+      time = time.set(k, v);
 
       if (this.type !== 'time') {
         var date = this.date.clone();
-        time.set({
-          year: date.year(),
-          month: date.month(),
-          date: date.date()
-        });
-        date.set({
-          hour: time.hour(),
-          minute: time.minute()
-        });
+        time = time.set('year', date.year()).set('month', date.month()).set('date', date.date());
+        date = date.set('hour', time.hour()).set('minute', time.minute());
         this.$emit('update:date', date);
       }
 
@@ -2554,7 +2550,7 @@ const TimeColumn_exports_ = /*#__PURE__*/exportHelper_default()(TimeColumnvue_ty
 
 
 
-const TimeSection_exports_ = /*#__PURE__*/exportHelper_default()(TimeSectionvue_type_script_lang_js, [['render',TimeSectionvue_type_template_id_eaee77d4_render]])
+const TimeSection_exports_ = /*#__PURE__*/exportHelper_default()(TimeSectionvue_type_script_lang_js, [['render',TimeSectionvue_type_template_id_0d6208c6_render]])
 
 /* harmony default export */ var TimeSection = (TimeSection_exports_);
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/picker/components/simple/SimpleMode.vue?vue&type=template&id=42423884
@@ -4597,7 +4593,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     selectDay: function selectDay(day) {
       if (!day.date || day.disabled) return;
       var date = this.core.dayjs(day.date);
-      date.set('hour', this.time.hour()).set('minute', this.time.minute()).set('second', 0);
+      date = date.set('hour', this.time.hour()).set('minute', this.time.minute()).set('second', 0);
       this.date = date.clone();
       this.time = date.clone();
 
@@ -4652,14 +4648,11 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       if (this.step < steps && !this.simple) return this.nextStep();
 
       if (this.hasStep('t')) {
-        var t = {
-          hour: this.time.hour(),
-          minute: this.time.minute()
-        };
-        this.date = this.date.set(t).clone();
-        this.selectedDates = selected.map(function (d) {
-          return d.set(t).clone();
+        this.date = this.date.set('hour', this.time.hour()).set('minute', this.time.minute()).clone();
+        selected = selected.map(function (d) {
+          return d.set('hour', _this12.time.hour()).set('minute', _this12.time.minute()).clone();
         });
+        this.selectedDates = selected;
       }
 
       if (['year', 'month', 'year-month'].indexOf(this.type) !== -1) this.selectedDates = selected.map(function () {
@@ -4667,8 +4660,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       });
 
       if (this.range && selected.length > 1) {
-        selected[0].startOf('day');
-        selected[1].endOf('day');
+        selected[0] = selected[0].startOf('day');
+        selected[1] = selected[1].endOf('day');
       }
 
       this.output = cloneDates(selected);
@@ -4723,11 +4716,9 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         this.date = getDate(payload);
       }
 
-      if (!this.hasStep('t')) this.date.set({
-        hour: 0,
-        minute: 0,
-        second: 0
-      });
+      if (!this.hasStep('t')) {
+        this.date = this.date.set('hour', 0).set('minute', 0).set('second', 0);
+      }
 
       if (this.isLower(this.date)) {
         this.date = this.minDate.clone();
@@ -4746,11 +4737,11 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     },
     goToday: function goToday() {
       var now = this.core.dayjs();
-      if (!this.hasStep('t')) now.set({
-        hour: 0,
-        minute: 0,
-        second: 0
-      });
+
+      if (!this.hasStep('t')) {
+        now = now.set('hour', 0).set('minute', 0).set('second', 0);
+      }
+
       this.date = now.clone();
       this.time = now.clone();
       this.selectedDates = [now.clone()];
@@ -4820,11 +4811,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
               a.year(year);
               b.year(year);
             } else if (this.type === 'time') {
-              a = now.clone().set({
-                h: a.hour(),
-                m: a.minute(),
-                s: 0
-              });
+              a = now.clone().set('h', a.hour()).set('m', a.minute()).set('s', 0);
               b = a.clone();
             }
 
