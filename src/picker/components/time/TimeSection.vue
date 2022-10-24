@@ -30,6 +30,7 @@ export default {
   props: {
     date: { type: Object, default: () => ({}) },
     time: { type: Object, default: () => ({}) },
+    type: { type: String, default: 'date' },
     jumpMinute: { type: Number, default: 1 },
     roundMinute: { type: Boolean, default: false },
     isDisableTime: { type: Boolean, default: false },
@@ -72,12 +73,14 @@ export default {
           let time = this.time.clone()
           let jm = this.jumpMinute
           let m = (jm - (time.minute() % jm)) % jm
-          time.add({ m })
+          time = time.add({ m })
           if (time.valueOf() !== this.time.valueOf()) {
             this.$emit('update:time', time)
             // @todo: this line should apply time to current date selection,
             // not all of them
-            this.selectedDates.forEach(d => d.set({ m: time.minute() }))
+            this.selectedDates.forEach(d => {
+              d = d.set('m', time.minute())
+            })
           }
         }
       },
@@ -88,12 +91,15 @@ export default {
     setTime(v, k) {
       let time = this.time.clone()
 
-      time.set(k, v)
+      time = time.set(k, v)
 
       if (this.type !== 'time') {
         let date = this.date.clone()
-        time.set({ year: date.year(), month: date.month(), date: date.date() })
-        date.set({ hour: time.hour(), minute: time.minute() })
+        time = time
+          .set('year', date.year())
+          .set('month', date.month())
+          .set('date', date.date())
+        date = date.set('hour', time.hour()).set('minute', time.minute())
         this.$emit('update:date', date)
       }
 
