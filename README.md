@@ -1,12 +1,12 @@
-# persian-datetime-picker-vue
+# persian-datetime-picker-vue (based on dayjs)
 
-[![npm version](https://badge.fury.io/js/vue3-persian-datetime-picker.svg)](https://www.npmjs.com/package/vue3-persian-datetime-picker)
+[![npm version](https://badge.fury.io/js/persian-datetime-picker-vue.svg)](https://www.npmjs.com/package/persian-datetime-picker-vue)
 
-> A vue plugin to select jalali date and time
+> A vue plugin to select jalali date and time based on `dayjs`
 
 See documentation and demo at [vue-persian-datetime-picker](https://talkhabi.github.io/vue-persian-datetime-picker).
 
-If you are using vuejs 2, please refer to [this repository](https://talkhabi.github.io/vue-persian-datetime-picker).
+If you are using vuejs 2, please refer to [this repository](https://github.com/imanmalekian31/vue-persian-datetime-picker).
 
 ## Installation
 
@@ -37,32 +37,6 @@ If you are using vuejs 2, please refer to [this repository](https://talkhabi.git
 
 ```bash
 npm install persian-datetime-picker-vue --save
-```
-
-Configuration for moment to ignore loading locales:
-
-```javascript
-// vue.config.js:
-module.exports = {
-  //..
-  configureWebpack: {
-    plugins: [new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)]
-  }
-  //...
-}
-```
-
-vitejs configuration:
-
-```javascript
-// vite.config.js
-// ...
-export default defineConfig({
-  // ...
-  resolve: {
-    mainFields: ['browser', 'module', 'main', 'jsnext:main', 'jsnext']
-  }
-})
 ```
 
 ### Usage
@@ -108,7 +82,7 @@ app.use(Vue3PersianDatetimePicker, {
   name: 'CustomDatePicker',
   props: {
     format: 'YYYY-MM-DD HH:mm',
-    displayFormat: 'jYYYY-jMM-jDD',
+    displayFormat: 'YYYY-MM-DD',
     editable: false,
     inputClass: 'form-control my-custom-class-name',
     placeholder: 'Please select a date',
@@ -130,42 +104,6 @@ Then use in component
 
 ### [Click to see full documentation and demo](https://talkhabi.github.io/vue-persian-datetime-picker)
 
-## Built With
-
-- [Vue.js](https://vuejs.org/) - The Progressive JavaScript Framework.
-- [Moment.js](https://momentjs.com/) - Parse, validate, manipulate, and display dates and times in JavaScript.
-- [moment-jalaali](https://github.com/jalaali/moment-jalaali) - A Jalaali (Jalali, Persian, Khorshidi, Shamsi) calendar system plugin for moment.js.
-
 ## License
 
 This project is licensed under the MIT License
-
-## Change log
-
-### 1.2.2 (2022-02-10)
-
-- Fixed: "value" is no longer needed.
-
-### 1.2.1 (2022-02-09)
-
-- Fixed: [Moment jalali localeData is not a function](https://github.com/talkhabi/vue3-persian-datetime-picker/pull/5)
-- Fixed: [Watch model value](https://github.com/talkhabi/vue3-persian-datetime-picker/pull/8)
-
-### 1.2.0 (2021-11-04)
-
-- Feat: Added support for display format when using [`custom-input`](https://talkhabi.github.io/vue-persian-datetime-picker/guide/custom-input.html)
-- Fixed: [Using jumpMinute and roundMinute together](https://github.com/talkhabi/vue-persian-datetime-picker/issues/182)
-- Fixed: [Typescript declaration](https://github.com/talkhabi/vue3-persian-datetime-picker/issues/4)
-
-### 1.1.0 (2021-10-01)
-
-- Feat: [Added simple-mode](https://talkhabi.github.io/vue-persian-datetime-picker/#/simple-mode)
-- Feat: [Added `input-attrs`](https://github.com/talkhabi/vue-persian-datetime-picker/issues/170)
-- Feat: [Added `@next-month` and `@prev-month` events](https://github.com/talkhabi/vue-persian-datetime-picker/issues/176)
-- Feat: Added `@year-change` and `@month-change` events
-- Fix: [Mouse wheel in Firefox](https://github.com/talkhabi/vue-persian-datetime-picker/issues/174)
-- Fix: Prevent selected dates from being reset
-
-### 1.0.0 (2021-08-14)
-
-- Migrated to Vue3
