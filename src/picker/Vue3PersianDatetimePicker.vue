@@ -870,7 +870,15 @@ export default {
      * @example <date-picker :input-attrs="{ foo: 'bar' }" />
      * @version 2.9.0
      */
-    inputAttrs: { type: Object, default: null }
+    inputAttrs: { type: Object, default: null },
+
+    /**
+     * If you want jalali output
+     * @type Boolean
+     * @default false
+     * @example <date-picker is-jalali />
+     */
+    isJalali: { type: Boolean, default: false }
   },
   emits: [
     'update:modelValue',
@@ -1131,6 +1139,9 @@ export default {
       let format = this.selfFormat
       let isDate = this.modelValue instanceof Date || this.format === 'date'
       return output.map(item => {
+        if (!this.isJalali) {
+          item = item.locale('en').calendar('gregorian')
+        }
         this.setTimezone(item, 'out')
         return isDate ? item.toDate() : item.format(format)
       })
