@@ -1038,7 +1038,7 @@ if (typeof window !== 'undefined') {
 // EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/picker/Vue3PersianDatetimePicker.vue?vue&type=template&id=ea1ec48c
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/picker/Vue3PersianDatetimePicker.vue?vue&type=template&id=8e476e66
 
 
 var _hoisted_1 = /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createTextVNode"])("x");
@@ -1589,7 +1589,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["name"])], 10, ["data-type", "data-placement", "data-locale", "data-locale-dir"]);
 }
-// CONCATENATED MODULE: ./src/picker/Vue3PersianDatetimePicker.vue?vue&type=template&id=ea1ec48c
+// CONCATENATED MODULE: ./src/picker/Vue3PersianDatetimePicker.vue?vue&type=template&id=8e476e66
 
 // EXTERNAL MODULE: ./src/picker/assets/scss/style.scss
 var style = __webpack_require__("4635");
@@ -4048,6 +4048,17 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     inputAttrs: {
       type: Object,
       default: null
+    },
+
+    /**
+     * If you want jalali output
+     * @type Boolean
+     * @default false
+     * @example <date-picker is-jalali />
+     */
+    isJalali: {
+      type: Boolean,
+      default: false
     }
   },
   emits: ['update:modelValue', 'locale-change', 'change', 'open', 'close', 'year-change', 'month-change', 'next-month', 'prev-month'],
@@ -4317,6 +4328,10 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       var format = this.selfFormat;
       var isDate = this.modelValue instanceof Date || this.format === 'date';
       return output.map(function (item) {
+        if (!_this5.isJalali) {
+          item = item.locale('en').calendar('gregorian');
+        }
+
         _this5.setTimezone(item, 'out');
 
         return isDate ? item.toDate() : item.format(format);
