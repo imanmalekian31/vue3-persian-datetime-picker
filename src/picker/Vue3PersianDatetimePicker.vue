@@ -1764,11 +1764,8 @@ export default {
     },
     setLocale(locale) {
       this.core.changeLocale(locale, this.localeConfig)
-      this.date = this.date.clone()
-      this.selectedDates = this.selectedDates.map(d => d.clone())
-      // TODO: FIX CHANGE LOCALE
-      document.querySelector('.vpd-selected') &&
-        document.querySelector('.vpd-selected').click()
+      this.date = this.core.dayjs(this.date)
+      this.selectedDates = this.selectedDates.map(d => this.core.dayjs(d))
     },
     setTimezone(date, mode) {
       let tz = this.timezone
