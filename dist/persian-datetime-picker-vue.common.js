@@ -1038,7 +1038,7 @@ if (typeof window !== 'undefined') {
 // EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/picker/Vue3PersianDatetimePicker.vue?vue&type=template&id=8e476e66
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/picker/Vue3PersianDatetimePicker.vue?vue&type=template&id=7a7b941d
 
 
 var _hoisted_1 = /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createTextVNode"])("x");
@@ -1589,7 +1589,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["name"])], 10, ["data-type", "data-placement", "data-locale", "data-locale-dir"]);
 }
-// CONCATENATED MODULE: ./src/picker/Vue3PersianDatetimePicker.vue?vue&type=template&id=8e476e66
+// CONCATENATED MODULE: ./src/picker/Vue3PersianDatetimePicker.vue?vue&type=template&id=7a7b941d
 
 // EXTERNAL MODULE: ./src/picker/assets/scss/style.scss
 var style = __webpack_require__("4635");
@@ -4984,13 +4984,13 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       this.$emit('change', this.isDataArray ? [] : null);
     },
     setLocale: function setLocale(locale) {
-      this.core.changeLocale(locale, this.localeConfig);
-      this.date = this.date.clone();
-      this.selectedDates = this.selectedDates.map(function (d) {
-        return d.clone();
-      }); // TODO: FIX CHANGE LOCALE
+      var _this16 = this;
 
-      document.querySelector('.vpd-selected') && document.querySelector('.vpd-selected').click();
+      this.core.changeLocale(locale, this.localeConfig);
+      this.date = this.core.dayjs(this.date);
+      this.selectedDates = this.selectedDates.map(function (d) {
+        return _this16.core.dayjs(d);
+      });
     },
     setTimezone: function setTimezone(date, mode) {
       var tz = this.timezone;
@@ -5030,7 +5030,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       this.windowWidth = window.innerWidth;
     },
     onWindowClick: function onWindowClick(event) {
-      var _this16 = this;
+      var _this17 = this;
 
       if (this.isPopover && this.$refs.picker && this.$refs.inputGroup) {
         var isOnPicker = this.$refs.picker.contains(event.target);
@@ -5043,13 +5043,13 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
           // then process the output
           // then close the picker
           setTimeout(function () {
-            return _this16.visible = false;
+            return _this17.visible = false;
           }, this.editable ? 500 : 0);
         }
       }
     },
     setPlacement: function setPlacement() {
-      var _this17 = this;
+      var _this18 = this;
 
       if (!this.isPopover) return;
       var allowed = ['top-left', 'top-right', 'bottom-right', 'bottom-left', 'left-top', 'left-bottom', 'right-top', 'right-bottom'];
@@ -5057,13 +5057,13 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       this.popoverPlace = 'bottom-right';
       this.$nextTick(function () {
         var placement = ['bottom', 'right'];
-        var container = _this17.$refs.container;
+        var container = _this18.$refs.container;
         var rect = container.getBoundingClientRect();
         var left = rect.left;
         var bottom = window.innerHeight - rect.bottom;
         if (bottom <= 0) placement[0] = 'top';
         if (left <= 0) placement[1] = 'left';
-        _this17.popoverPlace = placement.join('-');
+        _this18.popoverPlace = placement.join('-');
       });
     }
   },
