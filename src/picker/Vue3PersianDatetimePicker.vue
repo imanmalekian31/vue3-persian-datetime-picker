@@ -79,7 +79,12 @@
         @click.self="wrapperClick"
       >
         <div ref="container" class="vpd-container">
-          <div class="vpd-content">
+          <div
+            :class="[
+              'vpd-content',
+              { 'vpd-sidebar-container': $slots.sidebar }
+            ]"
+          >
             <div
               v-if="!simple"
               class="vpd-header"
@@ -437,6 +442,9 @@
                   />
                 </slot>
               </div>
+            </div>
+            <div v-if="$slots.sidebar" class="vpd-sidebar">
+              <slot name="sidebar" />
             </div>
           </div>
         </div>

@@ -112,6 +112,18 @@
   cursor: default;
 }
 
+.#{$prefix}sidebar-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  width: $width + $sidebar-width !important;
+}
+
+.#{$prefix}sidebar {
+  grid-row-start: 1;
+  grid-row-end: 3;
+  width: $sidebar-width;
+}
+
 .#{$prefix}header {
   color: #ffffff;
   padding: 10px 20px;
