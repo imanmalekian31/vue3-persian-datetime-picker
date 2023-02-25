@@ -1047,7 +1047,7 @@ if (typeof window !== 'undefined') {
 // EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
 var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__("8bbf");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/picker/Vue3PersianDatetimePicker.vue?vue&type=template&id=7f872c16
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist/templateLoader.js??ref--6!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/@vue/cli-service/node_modules/vue-loader-v16/dist??ref--0-1!./src/picker/Vue3PersianDatetimePicker.vue?vue&type=template&id=2b746102
 
 
 var _hoisted_1 = /*#__PURE__*/Object(external_commonjs_vue_commonjs2_vue_root_Vue_["createTextVNode"])("x");
@@ -1603,7 +1603,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 3
   }, 8, ["name"])], 10, ["data-type", "data-placement", "data-locale", "data-locale-dir"]);
 }
-// CONCATENATED MODULE: ./src/picker/Vue3PersianDatetimePicker.vue?vue&type=template&id=7f872c16
+// CONCATENATED MODULE: ./src/picker/Vue3PersianDatetimePicker.vue?vue&type=template&id=2b746102
 
 // EXTERNAL MODULE: ./src/picker/assets/scss/style.scss
 var style = __webpack_require__("4635");
@@ -4073,6 +4073,17 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
     isJalali: {
       type: Boolean,
       default: false
+    },
+
+    /**
+     * customizing display separator
+     * @type String
+     * @default ~
+     * @example <date-picker display-separator="تا" />
+     */
+    displaySeparator: {
+      type: String,
+      default: '~'
     }
   },
   emits: ['update:modelValue', 'locale-change', 'change', 'open', 'close', 'year-change', 'month-change', 'next-month', 'prev-month'],
@@ -4133,7 +4144,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
       if (this.hasStep('t')) format += ' HH:mm ';
       if (!format) return '';
-      var separator = this.multiple ? ' | ' : ' ~ ';
+      var separator = this.multiple ? ' | ' : " ".concat(this.displaySeparator, " ");
       return this.selectedDates.map(function (d) {
         return d.format(format);
       }).join(separator);
@@ -4297,7 +4308,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
       return this.output.map(function (d) {
         return d.format(format);
-      }).join(' ~ ');
+      }).join(" ".concat(this.displaySeparator, " "));
     },
     selfFormat: function selfFormat() {
       var format = this.format;
@@ -4368,7 +4379,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       return this.output.map(function (item) {
         var output = item.clone();
         return _this6.convertToLocaleNumber(output.format(format));
-      }).join(' ~ ');
+      }).join(" ".concat(this.displaySeparator, " "));
     },
     isDisableTime: function isDisableTime() {
       return this.hasStep('t') && this.checkDisable('t', this.time);
@@ -4873,7 +4884,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       var _this14 = this;
 
       if (!this.editable) return;
-      var value = e.target.value.split('~');
+      var value = e.target.value.split("".concat(this.displaySeparator));
       var output = value.map(function (item) {
         item = "".concat(item).replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
         if (item === '') return null;
