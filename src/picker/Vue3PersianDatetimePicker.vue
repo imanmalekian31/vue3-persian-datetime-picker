@@ -1544,7 +1544,10 @@ export default {
       if (
         this.modelValue !== '' &&
         this.modelValue !== null &&
-        this.modelValue.length
+        (
+          this.modelValue.length ||
+          this.modelValue instanceof Date
+        )
       ) {
         this.output = cloneDates(this.selectedDates)
       } else {
