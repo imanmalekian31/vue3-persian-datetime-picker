@@ -82,7 +82,9 @@
           <div
             :class="[
               'vpd-content',
-              { 'vpd-sidebar-container': $slots.sidebar }
+              {
+                'vpd-sidebar-container': $slots.sidebar || $slots.sidebar
+              }
             ]"
           >
             <div
@@ -170,54 +172,59 @@
               <template v-else>
                 <template v-if="hasStep('d')">
                   <div :class="['vpd-controls', directionClassDate]">
-                    <button
-                      type="button"
-                      class="vpd-next"
-                      :title="lang.nextMonth"
-                      :disabled="nextMonthDisabled"
-                      @click="nextMonth"
+                    <slot
+                      name="custom-header"
+                      v-bind="{ vm, color, goToday, date, lang, showToday }"
                     >
-                      <slot name="next-month">
-                        <arrow
-                          width="10"
-                          fill="#000"
-                          direction="right"
-                          style="vertical-align: middle"
-                        />
-                      </slot>
-                    </button>
-                    <button
-                      type="button"
-                      class="vpd-prev"
-                      :title="lang.prevMonth"
-                      :disabled="prevMonthDisabled"
-                      @click="prevMonth"
-                    >
-                      <slot name="prev-month">
-                        <arrow
-                          width="10"
-                          fill="#000"
-                          direction="left"
-                          style="vertical-align: middle"
-                        />
-                      </slot>
-                    </button>
-                    <transition name="slideX">
-                      <div
-                        :key="date.month()"
-                        class="vpd-month-label"
-                        @click="goStep('m')"
+                      <button
+                        type="button"
+                        class="vpd-next"
+                        :title="lang.nextMonth"
+                        :disabled="nextMonthDisabled"
+                        @click="nextMonth"
                       >
-                        <slot name="month-name" v-bind="{ vm, date, color }">
-                          <span
-                            :style="{ 'border-color': color, color }"
-                            v-text="
-                              convertToLocaleNumber(date.format('MMMM YYYY'))
-                            "
+                        <slot name="next-month">
+                          <arrow
+                            width="10"
+                            fill="#000"
+                            direction="right"
+                            style="vertical-align: middle"
                           />
                         </slot>
-                      </div>
-                    </transition>
+                      </button>
+                      <button
+                        type="button"
+                        class="vpd-prev"
+                        :title="lang.prevMonth"
+                        :disabled="prevMonthDisabled"
+                        @click="prevMonth"
+                      >
+                        <slot name="prev-month">
+                          <arrow
+                            width="10"
+                            fill="#000"
+                            direction="left"
+                            style="vertical-align: middle"
+                          />
+                        </slot>
+                      </button>
+                      <transition name="slideX">
+                        <div
+                          :key="date.month()"
+                          class="vpd-month-label"
+                          @click="goStep('m')"
+                        >
+                          <slot name="month-name" v-bind="{ vm, date, color }">
+                            <span
+                              :style="{ 'border-color': color, color }"
+                              v-text="
+                                convertToLocaleNumber(date.format('MMMM YYYY'))
+                              "
+                            />
+                          </slot>
+                        </div>
+                      </transition>
+                    </slot>
                   </div>
                   <div
                     class="vpd-clearfix"
@@ -441,10 +448,18 @@
                     v-text="lang.now"
                   />
                 </slot>
+
+                <slot
+                  name="locale-btn"
+                  v-bind="{ vm, color, locales, setLocale, localeData }"
+                />
               </div>
             </div>
-            <div v-if="$slots.sidebar" class="vpd-sidebar">
-              <slot name="sidebar" />
+            <div v-if="$slots.sidebar || $slots.sidebar" class="vpd-sidebar">
+              <slot
+                name="sidebar"
+                v-bind="{ vm, color, locales, setLocale, currentStep }"
+              />
             </div>
           </div>
         </div>
@@ -905,7 +920,10 @@ export default {
     'year-change',
     'month-change',
     'next-month',
-    'prev-month'
+    'prev-month',
+    'next-year',
+    'prev-year',
+    'selected-day'
   ],
   data() {
     let defaultLocale = this.locale.split(',')[0]
@@ -1063,6 +1081,22 @@ export default {
         this.maxDate &&
         this.maxDate.clone().startOf('month') <=
           this.date.clone().startOf('month')
+      )
+    },
+    prevYearDisabled() {
+      return (
+        this.hasStep('d') &&
+        this.minDate &&
+        this.minDate.clone().startOf('year') >=
+          this.date.clone().startOf('year')
+      )
+    },
+    nextYearDisabled() {
+      return (
+        this.hasStep('d') &&
+        this.maxDate &&
+        this.maxDate.clone().startOf('year') <=
+          this.date.clone().startOf('year')
       )
     },
     canGoToday() {
@@ -1401,7 +1435,16 @@ export default {
       this.date = this.date.clone().add(-1, 'month')
       this.$emit('prev-month', this.date.clone())
     },
+    nextYear() {
+      this.date = this.date.clone().add(1, 'year')
+      this.$emit('next-year', this.date.clone())
+    },
+    prevYear() {
+      this.date = this.date.clone().add(-1, 'year')
+      this.$emit('prev-year', this.date.clone())
+    },
     selectDay(day) {
+      this.$emit('selected-day', day)
       if (!day.date || day.disabled) return
       let date = this.core.dayjs(day.date)
       date = date
@@ -1562,6 +1605,15 @@ export default {
       this.date = now.clone()
       this.time = now.clone()
       this.selectedDates = [now.clone()]
+    },
+    showToday() {
+      const currYear = this.core.dayjs().get('y')
+      const currMonth = this.core.dayjs().get('M')
+
+      this.date = this.date
+        .clone()
+        .set('y', currYear)
+        .set('M', currMonth)
     },
     setType() {
       switch (this.type) {
